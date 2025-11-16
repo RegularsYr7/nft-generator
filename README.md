@@ -1,141 +1,97 @@
-# 🎨 NFT Generator - 以太坊 NFT 生成器# React + TypeScript + Vite
+# 🎨 NFT Generator - 以太坊 NFT 生成器
 
-基于以太坊测试网的简易 NFT 生成器，支持图片上传、IPFS 存储和 NFT 铸造功能。This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+基于以太坊测试网的简易 NFT 生成器，支持图片上传、IPFS 存储和 NFT 铸造功能。
 
-## ✨ 功能特性 Currently, two official plugins are available:
+## ✨ 功能特性
 
-- 🦊 **MetaMask 钱包连接** - 支持 MetaMask 钱包登录- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-
-- 🖼️ **图片上传** - 支持拖拽上传 NFT 图片- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
+- 🦊 **MetaMask 钱包连接** - 支持 MetaMask 钱包登录
+- 🖼️ **图片上传** - 支持拖拽上传 NFT 图片
 - 📦 **IPFS 存储** - 通过 Pinata 将图片和元数据存储到 IPFS
-
-- ⛓️ **智能合约铸造** - 基于 ERC-721 标准的 NFT 合约## React Compiler
-
+- ⛓️ **智能合约铸造** - 基于 ERC-721 标准的 NFT 合约
 - 🎯 **NFT 画廊** - 查看已铸造的 NFT 收藏
+- 🌐 **测试网支持** - Sepolia 测试网和本地网络
 
-- 🌐 **测试网支持** - Sepolia/Goerli 测试网 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ 技术栈
 
-## 🛠️ 技术栈## Expanding the ESLint configuration
+### 前端
 
-### 前端 If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚛️ **React 19** - UI 框架
+- ⚡ **Vite 7** - 构建工具
+- 🎨 **TailwindCSS** - 样式框架
+- 📘 **TypeScript** - 类型安全
 
-- ⚛️ **React 18** - UI 框架
+### Web3
 
-- ⚡ **Vite** - 构建工具```js
-
-- 🎨 **TailwindCSS** - 样式框架 export default defineConfig([
-
-- 📘 **TypeScript** - 类型安全 globalIgnores(['dist']),
-
-  {
-
-### Web3 files: ['**/*.{ts,tsx}'],
-
-- 🔗 **ethers.js v6** - 以太坊交互 extends: [
-
-- 🔨 **Hardhat** - 智能合约开发 // Other configs...
-
+- 🔗 **ethers.js v6** - 以太坊交互
+- 🔨 **Hardhat** - 智能合约开发
 - 🛡️ **OpenZeppelin** - 安全的合约库
+- 📍 **Pinata** - IPFS 存储服务
 
-- 📍 **Pinata** - IPFS 存储服务 // Remove tseslint.configs.recommended and replace with this
+## 📋 前置要求
 
-      tseslint.configs.recommendedTypeChecked,
-
-## 📋 前置要求 // Alternatively, use this for stricter rules
-
-      tseslint.configs.strictTypeChecked,
-
-1. **Node.js** >= 18.0.0 // Optionally, add this for stylistic rules
-
-2. **MetaMask** 浏览器扩展 tseslint.configs.stylisticTypeChecked,
-
+1. **Node.js** >= 18.0.0
+2. **MetaMask** 浏览器扩展
 3. **测试网 ETH** - 从水龙头获取
+   - Sepolia: https://sepoliafaucet.com/
+4. **Pinata 账户** - 用于 IPFS 存储（可选）
+   - 注册: https://pinata.cloud/
 
-   - Sepolia: https://sepoliafaucet.com/ // Other configs...
+## 🚀 快速开始
 
-   - Goerli: https://goerlifaucet.com/ ],
+### 1. 安装依赖
 
-4. **Pinata 账户** - 用于 IPFS 存储 languageOptions: {
-
-   - 注册: https://pinata.cloud/ parserOptions: {
-
-     project: ['./tsconfig.node.json', './tsconfig.app.json'],
-
-## 🚀 快速开始 tsconfigRootDir: import.meta.dirname,
-
-      },
-
-### 1. 安装依赖 // other options...
-
-    },
-
-```bash },
-
-npm install])
-
+```bash
+npm install
 ```
 
-### 2. 配置环境变量 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. 配置环境变量
 
-复制 `.env.example` 到 `.env` 并填写配置：```js
+复制 `.env.example` 到 `.env` 并填写配置：
 
-// eslint.config.js
-
-```bashimport reactX from 'eslint-plugin-react-x'
-
-cp .env.example .envimport reactDom from 'eslint-plugin-react-dom'
-
+```bash
+cp .env.example .env
 ```
 
-export default defineConfig([
+编辑 `.env` 文件：
 
-编辑 `.env` 文件： globalIgnores(['dist']),
+```env
+# 以太坊 RPC URL (从 Infura 或 Alchemy 获取)
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID
 
-{
+# 部署钱包私钥
+PRIVATE_KEY=你的私钥
 
-````env files: ['**/*.{ts,tsx}'],
+# Pinata API 密钥 (可选，不配置时使用 Base64 本地存储)
+VITE_PINATA_API_KEY=你的Pinata_API_Key
+VITE_PINATA_SECRET_KEY=你的Pinata_Secret_Key
 
-# 以太坊 RPC URL (从 Infura 或 Alchemy 获取)    extends: [
+# 合约地址 (部署后填写)
+VITE_CONTRACT_ADDRESS=
+```
 
-SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/YOUR_INFURA_PROJECT_ID      // Other configs...
+### 3. 编译智能合约
 
-      // Enable lint rules for React
-
-# 部署钱包私钥      reactX.configs['recommended-typescript'],
-
-PRIVATE_KEY=你的私钥      // Enable lint rules for React DOM
-
-      reactDom.configs.recommended,
-
-# Pinata API 密钥    ],
-
-VITE_PINATA_API_KEY=你的Pinata_API_Key    languageOptions: {
-
-VITE_PINATA_SECRET_KEY=你的Pinata_Secret_Key      parserOptions: {
-
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-
-# 合约地址 (部署后填写)        tsconfigRootDir: import.meta.dirname,
-
-VITE_CONTRACT_ADDRESS=      },
-
-```      // other options...
-
-    },
-
-### 3. 编译智能合约  },
-
-])
-
-```bash```
-
+```bash
 npm run hardhat:compile
-````
+```
 
-### 4. 部署智能合约
+### 4. 启动本地区块链（本地测试）
 
-部署到 Sepolia 测试网：
+**方式一：本地测试**
+
+在第一个终端启动 Hardhat 节点：
+
+```bash
+npm run hardhat:node
+```
+
+在第二个终端部署合约：
+
+```bash
+npm run hardhat:deploy:local
+```
+
+**方式二：部署到 Sepolia 测试网**
 
 ```bash
 npm run hardhat:deploy
@@ -156,7 +112,7 @@ npm run dev
 ### 铸造 NFT
 
 1. **连接钱包** - 点击 "连接 MetaMask" 按钮
-2. **切换网络** - 确保在 Sepolia 测试网
+2. **切换网络** - 确保在 Sepolia 测试网或本地网络 (Localhost 8545)
 3. **上传图片** - 点击上传区域选择图片
 4. **填写信息** - 输入 NFT 名称和描述
 5. **确认铸造** - 点击 "铸造 NFT" 并确认交易
@@ -173,12 +129,14 @@ npm run dev
 npm run dev              # 启动开发服务器
 npm run build            # 构建生产版本
 npm run preview          # 预览生产构建
+npm run lint             # 代码检查
 
 # 智能合约
-npm run hardhat:compile  # 编译合约
-npm run hardhat:test     # 运行测试
-npm run hardhat:deploy   # 部署到 Sepolia
-npm run hardhat:node     # 启动本地节点
+npm run hardhat:compile       # 编译合约
+npm run hardhat:test          # 运行测试
+npm run hardhat:deploy        # 部署到 Sepolia
+npm run hardhat:deploy:local  # 部署到本地网络
+npm run hardhat:node          # 启动本地节点
 ```
 
 ## 📁 项目结构
@@ -188,20 +146,20 @@ nft-generator/
 ├── contracts/              # 智能合约
 │   └── NFTGenerator.sol   # NFT 合约
 ├── scripts/               # 部署脚本
-│   └── deploy.ts         # 部署脚本
+│   └── deploy.cjs         # 部署脚本
 ├── src/
-│   ├── components/       # React 组件
+│   ├── components/        # React 组件
 │   │   ├── WalletConnect.tsx   # 钱包连接
 │   │   ├── NFTMinter.tsx       # NFT 铸造器
 │   │   └── NFTGallery.tsx      # NFT 画廊
-│   ├── utils/           # 工具函数
-│   │   ├── web3.ts      # Web3 服务
-│   │   └── ipfs.ts      # IPFS 服务
-│   ├── types/           # TypeScript 类型
-│   ├── App.tsx          # 主应用
-│   └── main.tsx         # 入口文件
-├── hardhat.config.ts    # Hardhat 配置
-├── tailwind.config.js   # TailwindCSS 配置
+│   ├── utils/            # 工具函数
+│   │   ├── web3.ts       # Web3 服务
+│   │   └── ipfs.ts       # IPFS 服务
+│   ├── types/            # TypeScript 类型
+│   ├── App.tsx           # 主应用
+│   └── main.tsx          # 入口文件
+├── hardhat.config.cjs    # Hardhat 配置
+├── tailwind.config.js    # TailwindCSS 配置
 └── package.json
 ```
 
@@ -225,12 +183,14 @@ nft-generator/
 ### 交易失败
 
 - 检查钱包是否有足够的测试 ETH
-- 确认在正确的网络（Sepolia）
+- 确认在正确的网络（Sepolia 或 Localhost）
 - 检查 Gas 费用设置
+- 铸造费用为 0.001 ETH + Gas 费
 
 ### IPFS 上传失败
 
-- 验证 Pinata API 密钥是否正确
+- 未配置 Pinata 时会自动使用 Base64 本地存储（仅用于测试）
+- 如需使用真实 IPFS，请配置 Pinata API 密钥
 - 检查图片大小（建议 < 10MB）
 - 确保网络连接正常
 
@@ -239,6 +199,13 @@ nft-generator/
 - 检查 RPC URL 是否正确
 - 确保私钥有足够的测试 ETH
 - 验证 Hardhat 配置
+- 本地测试时确保 Hardhat 节点正在运行
+
+### 本地网络问题
+
+- 确保第一个终端的 Hardhat 节点持续运行
+- 重启 Hardhat 节点后需要重新部署合约
+- 更新 `.env` 中的合约地址
 
 ## 📖 参考资源
 
